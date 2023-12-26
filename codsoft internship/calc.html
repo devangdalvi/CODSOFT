@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stylish Calculator</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #2C3E50;
+      color: #ECF0F1; 
+    }
+
+    #calculator-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #calculator {
+      width: 400px;
+      padding: 20px;
+      background-color: #34495E; 
+      border: 2px solid #2C3E50;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #display {
+      width: 50%;
+      margin-bottom: 10px;
+      padding: 15px;
+      font-size: 18px;
+      border: 1px solid #2C3E50;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      background-color: #ECF0F1; 
+      color: #2C3E50; 
+    }
+
+    #numbers, #operators {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    button {
+      flex-basis: calc(48% - 10px);
+      padding: 15px;
+      font-size: 16px;
+      margin: 5px;
+      cursor: pointer;
+      background-color: #3498DB; 
+      color: #ECF0F1;
+      border: 1px solid #3498DB;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980B9; 
+    }
+    header{
+         background-color: #0994f1;
+         font-size:larger;
+         text-align: center;
+         width: 50%;
+         margin-left: 500px;
+         border-radius: 50px;
+         color: #2C3E50;
+    }
+  </style>
+</head>
+<body>
+    <div>
+        <header>
+            <h2>Calculator</h2>
+        </header>
+    </div>
+
+  <div id="calculator-container">
+    <div id="calculator">
+      <input type="text" id="display" readonly>
+      <div id="numbers">
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="appendToDisplay('0')">0</button>
+      </div>
+      <div id="operators">
+        <button onclick="appendToDisplay('+')">+</button>
+        <button onclick="appendToDisplay('-')">-</button>
+        <button onclick="appendToDisplay('*')">*</button>
+        <button onclick="appendToDisplay('/')">/</button>
+        <button onclick="calculateResult()">=</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function calculateResult() {
+      try {
+        document.getElementById('display').value = eval(document.getElementById('display').value);
+      } catch (error) {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+  </script>
+
+</body>
+</html>
